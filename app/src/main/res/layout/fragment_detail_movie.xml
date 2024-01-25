@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray800"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleTextColor="@color/white"
+            app:contentScrim="@color/gray900"
+            app:expandedTitleTextColor="@color/white"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/expanded_image"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:fitsSystemWindows="true"
+                android:scaleType="fitXY"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray800"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/common_vertical_padding"
+            android:paddingEnd="@dimen/common_vertical_padding">
+
+            <TextView
+                android:id="@+id/tv_title_genre"
+                style="@style/title_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d8"
+                android:text="@string/genre"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_favorite"
+                android:layout_width="@dimen/d20"
+                android:layout_height="@dimen/d20"
+                android:layout_marginEnd="@dimen/d16"
+                android:contentDescription="@string/icon_favorite"
+                android:src="@drawable/ic_favorite_movie"
+                app:layout_constraintBottom_toBottomOf="@id/tv_genre"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_title_genre" />
+
+            <TextView
+                android:id="@+id/tv_genre"
+                style="@style/body_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/tv_title_genre"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_genre" />
+
+            <TextView
+                android:id="@+id/tv_title_release_date"
+                style="@style/title_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d8"
+                android:text="@string/release_date"
+                app:layout_constraintStart_toStartOf="@id/tv_genre"
+                app:layout_constraintTop_toBottomOf="@id/tv_genre" />
+
+            <TextView
+                android:id="@+id/tv_release_date"
+                style="@style/body_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/tv_title_release_date"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_release_date" />
+
+            <TextView
+                android:id="@+id/tv_title_synopsis"
+                style="@style/title_medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d8"
+                android:paddingBottom="@dimen/d8"
+                android:text="@string/synopsis"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_release_date" />
+
+            <TextView
+                android:id="@+id/tv_synopsis"
+                style="@style/body_medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_title_synopsis"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_synopsis"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut laoreet ut lectus sit amet varius. Sed semper imperdiet magna, vel semper sapien. Quisque viverra vulputate metus, et elementum erat sagittis ut. Duis vel hendrerit tortor. Nunc ut scelerisque augue. Morbi malesuada posuere justo, aliquet dignissim lectus fermentum vitae. Vestibulum rutrum pellentesque diam vitae eleifend." />
+
+            <TextView
+                android:id="@+id/tv_title_stars"
+                style="@style/title_medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/stars"
+                app:layout_constraintStart_toStartOf="@id/tv_synopsis"
+                app:layout_constraintTop_toBottomOf="@id/tv_synopsis" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_stars"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_title_stars"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_stars" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:constraint_referenced_ids="tv_genre, tv_title_genre, tv_release_date, tv_title_release_date, tv_title_stars, rv_stars, tv_title_synopsis, tv_synopsis, img_favorite" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progress_circular"
+                android:layout_width="@dimen/d20"
+                android:layout_height="@dimen/d20"
+                app:indicatorColor="@color/gray800"
+                app:trackColor="@color/white"
+                android:indeterminate="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

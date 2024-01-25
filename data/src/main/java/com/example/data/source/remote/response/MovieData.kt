@@ -3,11 +3,11 @@ package com.example.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class DiscoverMovieData(
+data class MovieData(
     @SerializedName("page")
     var page: Int?,
     @SerializedName("results")
-    var results: List<Result?>?,
+    var results: List<Result>?,
     @SerializedName("total_pages")
     var totalPages: Int?,
     @SerializedName("total_results")

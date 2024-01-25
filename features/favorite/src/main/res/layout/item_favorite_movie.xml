@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/d16">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_favorite"
+        android:layout_width="@dimen/d110"
+        android:layout_height="@dimen/d160"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ImageRoundedSquare" />
+
+    <TextView
+        android:id="@+id/tv_title_favorite"
+        style="@style/title_large"
+        android:layout_width="@dimen/d0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d8"
+        android:layout_marginEnd="@dimen/d8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_favorite"
+        app:layout_constraintTop_toTopOf="@id/img_favorite" />
+
+    <TextView
+        android:id="@+id/tv_release_date"
+        style="@style/body_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tv_title_favorite"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_favorite" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

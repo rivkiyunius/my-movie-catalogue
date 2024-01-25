@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">My Movie Catalogue</string>
+    <string name="title_movie">Movies</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_search">Search</string>
+    <string name="save">Save</string>
+    <string name="stars">Stars</string>
+    <string name="genre">Genre</string>
+    <string name="release_date">Release Date</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="icon_favorite">Icon Favorite</string>
+    <string name="error_network">Network %1$s</string>
+    <string name="error_message">Error: %1$s</string>
 </resources>

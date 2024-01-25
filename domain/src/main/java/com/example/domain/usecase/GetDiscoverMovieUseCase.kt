@@ -12,7 +12,8 @@ interface GetDiscoverMovieUseCase : BaseUseCase<Flow<Resource<List<DiscoverMovie
 
 class GetDiscoverMovieUseCaseImpl(private val repository: Repository) : GetDiscoverMovieUseCase {
     override suspend fun invoke(): Flow<Resource<List<DiscoverMovie>>> {
-        return repository.getDiscoverMovies()
+        val result = repository.getDiscoverMovies()
+        return result
     }
 
 }

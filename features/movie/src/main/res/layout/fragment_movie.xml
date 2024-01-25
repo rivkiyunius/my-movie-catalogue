@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray900"
+    tools:context=".ui.movielist.MovieFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_banner"
+            android:layout_width="@dimen/d0"
+            android:layout_height="250dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_section_now_playing"
+            style="@style/title_large"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d16"
+            android:paddingStart="@dimen/common_vertical_padding"
+            android:paddingEnd="@dimen/common_vertical_padding"
+            android:text="@string/now_playing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vp_banner" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_now_playing"
+            android:layout_width="@dimen/d0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d16"
+            android:paddingStart="@dimen/common_vertical_padding"
+            android:paddingEnd="@dimen/common_vertical_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_section_now_playing" />
+
+        <TextView
+            android:id="@+id/tv_section_top_rated"
+            style="@style/title_large"
+            android:layout_width="@dimen/d0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d16"
+            android:paddingStart="@dimen/common_vertical_padding"
+            android:paddingEnd="@dimen/common_vertical_padding"
+            android:text="@string/top_rated"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_now_playing" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_top_rated_movie"
+            android:layout_width="@dimen/d0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d16"
+            android:paddingStart="@dimen/common_vertical_padding"
+            android:paddingEnd="@dimen/common_vertical_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_section_top_rated" />
+
+        <TextView
+            android:id="@+id/tv_section_upcoming"
+            style="@style/title_large"
+            android:layout_width="@dimen/d0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d16"
+            android:paddingStart="@dimen/common_vertical_padding"
+            android:paddingEnd="@dimen/common_vertical_padding"
+            android:text="@string/upcoming_movie"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_top_rated_movie" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_upcoming_movie"
+            android:layout_width="@dimen/d0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d16"
+            android:paddingStart="@dimen/common_vertical_padding"
+            android:paddingEnd="@dimen/common_vertical_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_section_upcoming" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_movies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="tv_section_now_playing, rv_now_playing, tv_section_top_rated, rv_top_rated_movie, tv_section_upcoming, rv_upcoming_movie" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_circular"
+            android:layout_width="@dimen/d20"
+            android:layout_height="@dimen/d20"
+            android:indeterminate="true"
+            app:indicatorColor="@color/gray800"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:trackColor="@color/white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

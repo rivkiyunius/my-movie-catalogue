@@ -1,13 +1,13 @@
 package com.example.data.mapper
 
 import com.example.data.mapper.base.BaseDataMapper
-import com.example.data.source.local.entity.DiscoverMovieEntity
+import com.example.data.source.local.entity.NowPlayingMovieEntity
 import com.example.domain.model.DiscoverMovie
 import javax.inject.Inject
 
-class DiscoverMovieDataMapper @Inject constructor() :
-    BaseDataMapper<DiscoverMovie, DiscoverMovieEntity>() {
-    override fun mapToEntity(model: DiscoverMovieEntity): DiscoverMovie {
+class NowPlayingMovieLocalDataMapper @Inject constructor() :
+    BaseDataMapper<DiscoverMovie, NowPlayingMovieEntity>() {
+    override fun mapToEntity(model: NowPlayingMovieEntity): DiscoverMovie {
         return DiscoverMovie(
             adult = model.adult ?: false,
             backdropPath = model.backdropPath ?: "",

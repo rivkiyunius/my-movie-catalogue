@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_banner"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:contentDescription="Image Banner"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[11]" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/display_small"
+        android:layout_width="@dimen/d300"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/img_banner"
+        app:layout_constraintStart_toStartOf="@id/img_banner"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.698"
+        tools:text="Name Movie" />
+
+    <TextView
+        android:id="@+id/tv_year_and_genre"
+        style="@style/title_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/tv_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        tools:text="2020" />
+
+    <ImageView
+        android:id="@+id/img_rating"
+        android:layout_width="@dimen/d15"
+        android:layout_height="@dimen/d15"
+        android:src="@drawable/ic_rating"
+        android:layout_marginTop="@dimen/d4"
+        app:layout_constraintStart_toStartOf="@id/tv_year_and_genre"
+        app:layout_constraintTop_toBottomOf="@id/tv_year_and_genre"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/tv_rating"
+        style="@style/title_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d4"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/img_rating"
+        app:layout_constraintStart_toEndOf="@id/img_rating"
+        app:layout_constraintTop_toTopOf="@id/img_rating"
+        tools:text="rating" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

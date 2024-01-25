@@ -1,4 +1,4 @@
-package com.example.data.source
+package com.example.data.utils
 
 import com.example.data.source.remote.network.ApiResponse
 import com.example.domain.utils.Resource
@@ -28,6 +28,8 @@ abstract class NetworkBoundSource<ResultType, RequestType> {
                     emit(Resource.Error(apiResponse.errorMessage))
                 }
             }
+        } else {
+            emitAll(loadFromDB().map { Resource.Success(it) })
         }
     }
 

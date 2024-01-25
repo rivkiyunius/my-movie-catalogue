@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/searchMovieFragment">
+
+    <fragment
+        android:id="@+id/searchMovieFragment"
+        android:name="com.example.search.ui.listsearch.SearchMovieFragment"
+        android:label="SearchMovieFragment" >
+        <action
+            android:id="@+id/action_searchMovieFragment_to_fragmentDetailSearch"
+            app:destination="@id/fragmentDetailSearch" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetailSearch"
+        android:name="com.example.search.ui.detail.DetailSearchFragment"
+        android:label="FragmentDetailSearch" >
+        <argument
+            android:name="movieId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>
