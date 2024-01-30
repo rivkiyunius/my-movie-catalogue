@@ -5,9 +5,7 @@ orbs:
 
 jobs:
   build:
-    executor:
-      name: android/android
-      resource-class: large
+    executor: android/android
 #      tag: 2021.10.1
     steps:
       - checkout
