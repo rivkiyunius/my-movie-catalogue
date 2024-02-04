@@ -46,7 +46,7 @@ class MovieViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _error.value = it.message
+                        _error.value = it.message ?: ""
                         _isLoading.value = false
                     }
                 }
@@ -68,7 +68,7 @@ class MovieViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _error.value = it.message
+                        _error.value = it.message ?: ""
                         _isLoading.value = false
                     }
                 }
@@ -90,7 +90,7 @@ class MovieViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _error.value = it.message
+                        _error.value = it.message ?: ""
                         _isLoading.value = false
                     }
                 }
@@ -113,7 +113,7 @@ class MovieViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _error.value = it.message
+                        _error.value = it.message ?: ""
                         _isLoading.value = false
                     }
                 }

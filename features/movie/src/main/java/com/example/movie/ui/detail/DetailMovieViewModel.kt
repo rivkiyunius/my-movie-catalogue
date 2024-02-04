@@ -3,6 +3,7 @@ package com.example.movie.ui.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.data.utils.connectivitynetwork.ConnectivityObserver
 import com.example.domain.model.CreditsMovie
 import com.example.domain.model.DetailMovie
 import com.example.domain.usecase.DeleteFavoriteMovieUseCase
@@ -11,12 +12,11 @@ import com.example.domain.usecase.GetDetailMovieUseCase
 import com.example.domain.usecase.InsertFavoriteMovieUseCase
 import com.example.domain.utils.Resource
 import com.example.mymoviecatalogue.base.BaseViewModel
-import com.example.data.utils.connectivitynetwork.ConnectivityObserver
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DetailMovieViewModel @Inject constructor(
-    private val connectivityObserver: ConnectivityObserver,
+    connectivityObserver: ConnectivityObserver,
     private val detailMovieUseCase: GetDetailMovieUseCase,
     private val getCreditsMovieUseCase: GetCreditsMovieUseCase,
     private val insertFavoriteMovieUseCase: InsertFavoriteMovieUseCase,
@@ -44,7 +44,7 @@ class DetailMovieViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _error.value = it.message
+                        _error.value = it.message ?: ""
                     }
 
                     else -> {}
@@ -67,7 +67,7 @@ class DetailMovieViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _error.value = it.message
+                        _error.value = it.message ?: ""
                     }
 
                     else -> {}
