@@ -34,7 +34,7 @@ jobs:
           name: Run Tests
           command: ./gradlew :features:movie:testDebugUnitTest
       - store_test_results:
-          path: app/build/test-results
+          path: features/movie/build/test-results
       - store_artifacts:
           path: app/build/outputs/apk/debug/
           destination: artifact-file
