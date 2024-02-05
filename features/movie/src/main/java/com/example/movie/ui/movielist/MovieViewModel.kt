@@ -3,6 +3,7 @@ package com.example.movie.ui.movielist
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.data.utils.connectivitynetwork.ConnectivityObserver
 import com.example.domain.model.DiscoverMovie
 import com.example.domain.usecase.GetNowPlayingMovieUseCase
 import com.example.domain.usecase.GetPopularMovieUseCase
@@ -10,12 +11,11 @@ import com.example.domain.usecase.GetTopRatedMovieUseCase
 import com.example.domain.usecase.GetUpcomingMovieUseCase
 import com.example.domain.utils.Resource
 import com.example.mymoviecatalogue.base.BaseViewModel
-import com.example.data.utils.connectivitynetwork.ConnectivityObserver
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MovieViewModel @Inject constructor(
-    private val connectivityObserver: ConnectivityObserver,
+    connectivityObserver: ConnectivityObserver,
     private val popularMovieUseCase: GetPopularMovieUseCase,
     private val nowPlayingMovieUseCase: GetNowPlayingMovieUseCase,
     private val topRatedMovieUseCase: GetTopRatedMovieUseCase,
@@ -46,7 +46,8 @@ class MovieViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _error.value = it.message
+                        _error.value = it.message ?: ""
+                        _isLoading.value = false
                     }
                 }
             }
@@ -67,7 +68,8 @@ class MovieViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _error.value = it.message
+                        _error.value = it.message ?: ""
+                        _isLoading.value = false
                     }
                 }
             }
@@ -88,7 +90,8 @@ class MovieViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _error.value = it.message
+                        _error.value = it.message ?: ""
+                        _isLoading.value = false
                     }
                 }
             }
@@ -110,7 +113,8 @@ class MovieViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _error.value = it.message
+                        _error.value = it.message ?: ""
+                        _isLoading.value = false
                     }
                 }
             }

@@ -23,7 +23,7 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 class SearchMovieViewModel @Inject constructor(
     private val searchMovieUseCase: SearchMovieUseCase,
-    private val connectivityObserver: ConnectivityObserver
+    connectivityObserver: ConnectivityObserver
 ) :
     BaseViewModel(connectivityObserver) {
     private val _searchMovie = MutableLiveData<List<DiscoverMovie>?>()
@@ -51,7 +51,8 @@ class SearchMovieViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _error.value = it.message
+                        _error.value = it.message ?: ""
+                        _isLoading.value = false
                     }
                 }
             }

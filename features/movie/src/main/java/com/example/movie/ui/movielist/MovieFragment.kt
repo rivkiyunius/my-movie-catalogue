@@ -61,6 +61,14 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
         vmMovie.getUpcomingMovie()
     }
 
+    override fun onDestroyView() {
+        nowPlayingMoviesAdapter = null
+        popularMovieAdapter = null
+        upcomingMoviesAdapter = null
+        topRatedMoviesAdapter = null
+        super.onDestroyView()
+    }
+
     private fun observeData() {
         (activity as MainActivity).showBottomNav()
         vmMovie.apply {

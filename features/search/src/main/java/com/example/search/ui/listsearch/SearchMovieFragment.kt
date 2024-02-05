@@ -65,8 +65,9 @@ class SearchMovieFragment :
         (activity as MainActivity).showBottomNav()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        resultAdapter = null
+        super.onDestroyView()
     }
 
     private fun initView() {

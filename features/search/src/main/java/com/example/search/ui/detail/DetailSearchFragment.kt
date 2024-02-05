@@ -2,14 +2,9 @@ package com.example.search.ui.detail
 
 import android.content.Context
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
-import androidx.lifecycle.Lifecycle
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,7 +49,6 @@ class DetailSearchFragment :
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).hideBottomNav()
         val id = args.movieId
-        setupMenu()
         initView(id)
         observeData()
     }
@@ -63,14 +57,6 @@ class DetailSearchFragment :
         vmDetail.getDetailMovie(id)
         vmDetail.getCreditMovie(id)
         viewBinding?.apply {
-            toolbar.setOnMenuItemClickListener { menu ->
-                if (menu.itemId == com.example.mymoviecatalogue.R.id.save_menu) {
-                    vmDetail.saveFavoriteMovie()
-                    true
-                } else {
-                    false
-                }
-            }
             rvStars.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             rvStars.adapter = starsAdapter
@@ -86,34 +72,62 @@ class DetailSearchFragment :
                     tvSynopsis.text = it?.overview
                     tvGenre.text = it?.genres?.joinToString { it?.name ?: "" }
                     tvReleaseDate.text = it?.releaseDate?.dateFormat("MMMM yyyy")
+                    changeIconFavorite(it?.favorite == true)
                 }
             }
             creditMovie.observe(viewLifecycleOwner) {
                 starsAdapter.setCreditsMovie(it ?: mutableListOf())
+            }
+            isFavorite.observe(viewLifecycleOwner) { isFavorite ->
+                changeIconFavorite(isFavorite)
+                viewBinding?.imgFavorite?.setOnClickListener {
+                    if (isFavorite) {
+                        vmDetail.deleteFavoriteMovie()
+                    } else {
+                        vmDetail.saveFavoriteMovie()
+                    }
+                }
             }
             isLoading.observe(viewLifecycleOwner) {
                 viewBinding?.groupDetail?.visibility = if (it) View.GONE else View.VISIBLE
                 viewBinding?.progressCircular?.visibility = if (it) View.VISIBLE else View.GONE
             }
             error.observe(viewLifecycleOwner) {
-                Toast.makeText(requireContext(), getString(com.example.mymoviecatalogue.R.string.error_message, it), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    getString(com.example.mymoviecatalogue.R.string.error_message, it),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             networkStatus.observe(viewLifecycleOwner) {
                 if (it == ConnectivityObserver.Status.Lost.name) {
-                    Toast.makeText(requireContext(), getString(com.example.mymoviecatalogue.R.string.error_network, it), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        getString(com.example.mymoviecatalogue.R.string.error_network, it),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
     }
 
-    private fun setupMenu() {
-        (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(com.example.mymoviecatalogue.R.menu.menu_save, menu)
+    private fun changeIconFavorite(isFavorite: Boolean) {
+        viewBinding?.apply {
+            if (isFavorite) {
+                imgFavorite.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        com.example.mymoviecatalogue.R.drawable.ic_favorite_movie_filled
+                    )
+                )
+            } else {
+                imgFavorite.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        com.example.mymoviecatalogue.R.drawable.ic_favorite_movie
+                    )
+                )
             }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean = true
-
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        }
     }
 }

@@ -3,9 +3,9 @@ package com.example.domain.model
 data class DetailMovie(
     var adult: Boolean?,
     var backdropPath: String?,
-    var belongsToCollection: BelongsToCollection?,
+    var belongsToCollection: BelongsToCollectionMovie?,
     var budget: Int?,
-    var genres: List<Genre?>?,
+    var genres: List<GenreMovie?>?,
     var homepage: String?,
     var id: Int?,
     var imdbId: String?,
@@ -23,16 +23,4 @@ data class DetailMovie(
     var voteAverage: Double?,
     var voteCount: Int?,
     var favorite: Boolean
-) {
-    data class BelongsToCollection(
-        var backdropPath: String?,
-        var id: Int?,
-        var name: String?,
-        var posterPath: String?
-    )
-
-    data class Genre(
-        var id: Int?,
-        var name: String?
-    )
-}
+)

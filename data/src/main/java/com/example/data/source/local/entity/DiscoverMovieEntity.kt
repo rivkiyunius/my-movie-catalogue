@@ -1,6 +1,5 @@
 package com.example.data.source.local.entity
 
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -9,7 +8,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "discover_movie")
 data class DiscoverMovieEntity(
     @PrimaryKey
-    @NonNull
     @ColumnInfo("id")
     var id: Int,
     @ColumnInfo("adult")

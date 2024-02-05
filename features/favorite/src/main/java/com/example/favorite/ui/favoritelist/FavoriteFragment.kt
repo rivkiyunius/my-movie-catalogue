@@ -21,9 +21,7 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>(FragmentFavoriteB
     MovieOnClickListener {
     @Inject
     lateinit var diffUtilsConfig: DiffUtilsConfig
-    private val favoriteAdapter: FavoriteMovieAdapter by lazy {
-        FavoriteMovieAdapter(diffUtilsConfig, this)
-    }
+    private var favoriteAdapter: FavoriteMovieAdapter? = null
     private val vmFavorite: FavoriteViewModel by lazy {
         ViewModelProvider(this, viewModelFactory)[FavoriteViewModel::class.java]
     }
@@ -59,9 +57,15 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>(FragmentFavoriteB
         findNavController().navigate(action)
     }
 
+    override fun onDestroyView() {
+        favoriteAdapter = null
+        super.onDestroyView()
+    }
+
     private fun initView() {
         vmFavorite.getFavoriteMovie()
         viewBinding?.apply {
+            favoriteAdapter = FavoriteMovieAdapter(diffUtilsConfig, this@FavoriteFragment)
             rvFavorite.layoutManager = LinearLayoutManager(requireContext())
             rvFavorite.adapter = favoriteAdapter
         }
@@ -70,7 +74,7 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>(FragmentFavoriteB
     private fun observeData() {
         vmFavorite.apply {
             favoriteMovies.observe(viewLifecycleOwner) {
-                favoriteAdapter.setFavoriteMovie(it)
+                favoriteAdapter?.setFavoriteMovie(it)
             }
         }
     }

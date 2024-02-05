@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DetailMovieViewModel @Inject constructor(
-    private val connectivityObserver: ConnectivityObserver,
+    connectivityObserver: ConnectivityObserver,
     private val detailMovieUseCase: GetDetailMovieUseCase,
     private val getCreditsMovieUseCase: GetCreditsMovieUseCase,
     private val insertFavoriteMovieUseCase: InsertFavoriteMovieUseCase,
@@ -44,7 +44,8 @@ class DetailMovieViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _error.value = it.message
+                        _error.value = it.message ?: ""
+                        _isLoading.value = false
                     }
 
                     else -> {}
@@ -67,7 +68,8 @@ class DetailMovieViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _error.value = it.message
+                        _error.value = it.message ?: ""
+                        _isLoading.value = false
                     }
 
                     else -> {}
