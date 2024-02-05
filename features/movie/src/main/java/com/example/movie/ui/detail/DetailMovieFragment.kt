@@ -97,11 +97,19 @@ class DetailMovieFragment :
                 }
             }
             error.observe(viewLifecycleOwner) {
-                Toast.makeText(requireContext(), getString(com.example.mymoviecatalogue.R.string.error_message, it), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    getString(com.example.mymoviecatalogue.R.string.error_message, it),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             networkStatus.observe(viewLifecycleOwner) {
                 if (it == ConnectivityObserver.Status.Lost.name) {
-                    Toast.makeText(requireContext(), getString(com.example.mymoviecatalogue.R.string.error_network, it), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        getString(com.example.mymoviecatalogue.R.string.error_network, it),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }

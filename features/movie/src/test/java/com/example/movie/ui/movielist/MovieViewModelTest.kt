@@ -8,6 +8,7 @@ import com.example.domain.usecase.GetTopRatedMovieUseCase
 import com.example.domain.usecase.GetUpcomingMovieUseCase
 import com.example.domain.utils.Resource
 import com.example.movie.BaseViewModelTest
+import com.example.movie.dummyDiscoverMovie
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -39,21 +40,6 @@ class MovieViewModelTest : BaseViewModelTest() {
 
     @Test
     fun `success get popular movies`() = runTest {
-        val dummyDiscoverMovie = DiscoverMovie(
-            id = 0,
-            popularity = 100.0,
-            adult = false,
-            backdropPath = "",
-            originalLanguage = "",
-            originalTitle = "",
-            title = "",
-            posterPath = "",
-            overview = "",
-            releaseDate = "",
-            video = false,
-            voteAverage = 2.4,
-            voteCount = 0
-        )
         val dataDummies = Resource.Success(listOf(dummyDiscoverMovie))
         coEvery { connectivityObserver.observe() } returns (flowOf(ConnectivityObserver.Status.Available))
         coEvery { popularMovieUseCase.invoke() } returns (flowOf(dataDummies))
@@ -87,21 +73,6 @@ class MovieViewModelTest : BaseViewModelTest() {
 
     @Test
     fun `success get now playing movies`() = runTest {
-        val dummyDiscoverMovie = DiscoverMovie(
-            id = 0,
-            popularity = 100.0,
-            adult = false,
-            backdropPath = "",
-            originalLanguage = "",
-            originalTitle = "",
-            title = "",
-            posterPath = "",
-            overview = "",
-            releaseDate = "",
-            video = false,
-            voteAverage = 2.4,
-            voteCount = 0
-        )
         val dataDummies = Resource.Success(listOf(dummyDiscoverMovie))
         coEvery { connectivityObserver.observe() } returns (flowOf(ConnectivityObserver.Status.Available))
         coEvery { nowPlayingMovieUseCase.invoke() } returns (flowOf(dataDummies))
@@ -135,21 +106,6 @@ class MovieViewModelTest : BaseViewModelTest() {
 
     @Test
     fun `success get top rated movies`() = runTest {
-        val dummyDiscoverMovie = DiscoverMovie(
-            id = 0,
-            popularity = 100.0,
-            adult = false,
-            backdropPath = "",
-            originalLanguage = "",
-            originalTitle = "",
-            title = "",
-            posterPath = "",
-            overview = "",
-            releaseDate = "",
-            video = false,
-            voteAverage = 2.4,
-            voteCount = 0
-        )
         val dataDummies = Resource.Success(listOf(dummyDiscoverMovie))
         coEvery { connectivityObserver.observe() } returns (flowOf(ConnectivityObserver.Status.Available))
         coEvery { topRatedMovieUseCase.invoke() } returns (flowOf(dataDummies))
@@ -183,21 +139,6 @@ class MovieViewModelTest : BaseViewModelTest() {
 
     @Test
     fun `success get upcoming movies`() = runTest {
-        val dummyDiscoverMovie = DiscoverMovie(
-            id = 0,
-            popularity = 100.0,
-            adult = false,
-            backdropPath = "",
-            originalLanguage = "",
-            originalTitle = "",
-            title = "",
-            posterPath = "",
-            overview = "",
-            releaseDate = "",
-            video = false,
-            voteAverage = 2.4,
-            voteCount = 0
-        )
         val dataDummies = Resource.Success(listOf(dummyDiscoverMovie))
         coEvery { connectivityObserver.observe() } returns (flowOf(ConnectivityObserver.Status.Available))
         coEvery { upcomingMovieUseCase.invoke() } returns (flowOf(dataDummies))

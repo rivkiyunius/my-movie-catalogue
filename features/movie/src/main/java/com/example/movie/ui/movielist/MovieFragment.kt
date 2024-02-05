@@ -2,7 +2,6 @@ package com.example.movie.ui.movielist
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -62,6 +61,14 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
         vmMovie.getUpcomingMovie()
     }
 
+    override fun onDestroyView() {
+        nowPlayingMoviesAdapter = null
+        popularMovieAdapter = null
+        upcomingMoviesAdapter = null
+        topRatedMoviesAdapter = null
+        super.onDestroyView()
+    }
+
     private fun observeData() {
         (activity as MainActivity).showBottomNav()
         vmMovie.apply {
@@ -84,7 +91,6 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
                 }
             }
             error.observe(viewLifecycleOwner) {
-                Log.e("TAG_ERROR", "ERROR: $it")
                 Toast.makeText(
                     requireContext(),
                     getString(com.example.mymoviecatalogue.R.string.error_message, it),

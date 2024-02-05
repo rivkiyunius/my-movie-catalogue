@@ -52,6 +52,7 @@ class SearchMovieViewModel @Inject constructor(
 
                     is Resource.Error -> {
                         _error.value = it.message ?: ""
+                        _isLoading.value = false
                     }
                 }
             }
