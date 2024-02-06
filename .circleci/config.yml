@@ -31,10 +31,20 @@ jobs:
           path: app/build/reports
           destination: reports
       - run:
-          name: Run Tests
+          name: Run Tests Module Movie
           command: ./gradlew :features:movie:testDebugUnitTest
+      - run:
+          name: Run Tests Module Search
+          command: ./gradlew :features:search:testDebugUnitTest
+      - run:
+          name: Run Tests Module Favorite
+          command: ./gradlew :features:favorite:testDebugUnitTest
       - store_test_results:
           path: features/movie/build/test-results
+      - store_test_results:
+          path: features/search/build/test-results
+      - store_test_results:
+          path: features/favorite/build/test-results
       - store_artifacts:
           path: app/build/outputs/apk/debug/
           destination: artifact-file

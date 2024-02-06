@@ -11,4 +11,7 @@
     <string name="icon_favorite">Icon Favorite</string>
     <string name="error_network">Network %1$s</string>
     <string name="error_message">Error: %1$s</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="favourites">Favourites</string>
 </resources>
