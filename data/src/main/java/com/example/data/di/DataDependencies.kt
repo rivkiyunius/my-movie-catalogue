@@ -14,6 +14,7 @@ import com.example.data.utils.connectivitynetwork.ConnectivityObserver
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
 
 @EntryPoint
 @InstallIn(SingletonComponent::class)
@@ -29,4 +30,5 @@ interface DataDependencies {
     fun provideCreditsMovieDao(): CreditsMovieDao
     fun providesFavoriteMovieDao(): FavoriteMovieDao
     fun provideConnectivityObserver(): ConnectivityObserver
+    @IoDispatcher fun providesIoDispatcher() : CoroutineDispatcher
 }

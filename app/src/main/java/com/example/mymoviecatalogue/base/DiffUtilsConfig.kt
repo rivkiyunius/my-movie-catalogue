@@ -2,7 +2,6 @@ package com.example.mymoviecatalogue.base
 
 import androidx.recyclerview.widget.DiffUtil
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class DiffUtilsConfig @Inject constructor() : DiffUtil.Callback() {
 

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray900"
-    tools:context=".ui.favoritelist.FavoriteFragment">
+    tools:context=".ui.favoritelist.FavoriteFragment"
+    tools:ignore="Overdraw">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

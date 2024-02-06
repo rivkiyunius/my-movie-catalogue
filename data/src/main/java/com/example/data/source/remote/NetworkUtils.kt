@@ -1,13 +1,14 @@
 package com.example.data.source.remote
 
 import com.example.data.source.remote.network.ApiResponse
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import retrofit2.Response
 
 internal suspend fun <T> getResponse(
+    dispatcher: CoroutineDispatcher,
     request: suspend () -> Response<T>
 ): Flow<ApiResponse<T>> {
     return flow {
@@ -22,5 +23,5 @@ internal suspend fun <T> getResponse(
         } catch (e: Exception) {
             emit(ApiResponse.Error(errorMessage = e.toString()))
         }
-    }.flowOn(Dispatchers.IO)
+    }.flowOn(dispatcher)
 }
