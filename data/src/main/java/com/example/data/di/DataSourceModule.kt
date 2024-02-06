@@ -18,6 +18,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -48,6 +49,9 @@ class DataSourceModule {
         )
 
     @Provides
-    fun provideRemoteDataSource(apiService: ApiService): RemoteDataSource =
-        RemoteDataSourceImpl(apiService)
+    fun provideRemoteDataSource(
+        apiService: ApiService,
+        @IoDispatcher ioDispatcher: CoroutineDispatcher
+    ): RemoteDataSource =
+        RemoteDataSourceImpl(apiService, ioDispatcher)
 }
