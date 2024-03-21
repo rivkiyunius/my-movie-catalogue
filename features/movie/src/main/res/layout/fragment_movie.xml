@@ -87,10 +87,12 @@
             android:layout_width="@dimen/d0"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/d16"
+            android:layout_marginBottom="@dimen/d16"
             android:paddingStart="@dimen/common_vertical_padding"
             android:paddingEnd="@dimen/common_vertical_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_section_upcoming" />
 
         <androidx.constraintlayout.widget.Group

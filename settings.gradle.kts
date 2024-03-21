@@ -14,9 +14,9 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "My Movie Catalogue"
-include ':app'
-include ':data'
-include ':domain'
-include ':features:movie'
-include ':features:favorite'
-include ':features:search'
+include(":app")
+include(":data")
+include(":domain")
+include(":features:movie")
+include(":features:favorite")
+include(":features:search")
